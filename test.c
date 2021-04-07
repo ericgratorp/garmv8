@@ -22,8 +22,8 @@ void print(const char *str)
 void relocate(void)
 {
     unsigned long data_section_size = &END_OF_DATA - &START_OF_DATA;
-    unsigned char *ram_start = &START_OF_DATA;
-    unsigned char *flash_start = &END_OF_RODATA;
+    char *ram_start = &START_OF_DATA;
+    char *flash_start = &END_OF_RODATA;
 
     while (data_section_size-- > 0) {
         *ram_start = *flash_start;
