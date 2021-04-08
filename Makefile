@@ -9,7 +9,7 @@ CC = ${PREFIX}gcc
 LD = ${PREFIX}ld
 OBJCOPY = ${PREFIX}objcopy
 
-OBJS = start.o test.o
+OBJS = start.o main.o
 
 all: ${OBJS}
 	${LD} ${LDFLAGS} -T start.ld -o start.elf $^
@@ -23,5 +23,7 @@ all: ${OBJS}
 %.o: %.S
 	${CC} ${CFLAGS} -c $< -o $@
 
+run: all
+	qemu-system-aarch64 -machine virt -cpu cortex-a53 -bios start.bin -nographic -machine secure=on -m 256M
 clean:
 	rm -f *.o *.bin *.elf

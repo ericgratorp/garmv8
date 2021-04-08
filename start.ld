@@ -3,7 +3,7 @@ ENTRY(start)
 MEMORY
 {
 	flash (rx) : ORIGIN = 0x0, LENGTH = 0x08000000
-	sram (rwx) : ORIGIN = 0x43000000, LENGTH = 1M
+	sram (rwx) : ORIGIN = 0x40000000, LENGTH = 256M
 	/* ARM qemu has no SRAM, so pretend that a DRAM area
 	 * is SRAM
          */
